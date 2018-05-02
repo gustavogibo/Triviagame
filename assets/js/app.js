@@ -35,26 +35,6 @@ $(document).ready(function() {
 
             setInterval(trivia.count, 1000);
 
-            for (let i = 0; i < trivia.questions.length; i++) {
-                
-                var html = "<div class='col-12'";
-                html += "<div class='card box-question bg-info text-center'>";
-                html += "<div class='card-body'>";
-                html += "<h2 class='card-title'>"+trivia.questions[i].question+"</h2>";
-                for (let count = 0; count < trivia.questions[i].options.length; count++) {
-                    html += "<div class='custom-control custom-radio'>";
-                    html += "<input id='question-"+i+"' name='question-"+i+"' type='radio' class='custom-control-input' value='"+trivia.questions[i].options[count]+"'>";
-                    html += "<label class='custom-control-label' for='question-"+i+"'>"+trivia.questions[i].options[count]+"</label>";
-                    html += "</div>";
-                }
-                html += "</div>";
-                html += "</div>";
-                html += "</div>";
-                // console.log(html);
-                $(".box-questions").append(html);
-                
-            }
-
         },
         count: function() {
 
