@@ -66,12 +66,19 @@ $(document).ready(function() {
         }
     
         return minutes + ":" + seconds;
+        },
+        showResults: function() {
+
+            
+
         }
         
 
     };
 
     trivia.startGame();
+
+    setTimeout(trivia.showResults, 25000 );
 
 
 });
