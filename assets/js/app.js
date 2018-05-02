@@ -68,8 +68,13 @@ $(document).ready(function() {
         return minutes + ":" + seconds;
         },
         showResults: function() {
-
             
+            var arr = [];
+            $(".box-questions input[type=radio]:checked").each(function() {
+                arr.push($(this).val());
+            });
+
+            console.log(arr);
 
         }
         
