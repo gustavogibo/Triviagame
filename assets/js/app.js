@@ -8,7 +8,6 @@ $(document).ready(function() {
         timer: 20,
         counter: 0,
         interval: 0,
-        //trivia.questions[0]
         questions:
             [
                 {question: "Which actress has won the most Oscars?",
@@ -38,12 +37,13 @@ $(document).ready(function() {
                 },
 
             ],
-        // function responsible for change the timer each second.
+        // function responsible for change the timer each second and update in the DOM
         startGame: function() {
 
             this.counter = setInterval(trivia.count, 1000);
 
         },
+        // function called every second once the game starts
         count: function() {
 
 
@@ -64,6 +64,7 @@ $(document).ready(function() {
             }
         
         },
+        // Function to convert milisseconds to seconds
         timeConverter: function(t) {
 
         //  Takes the current time in seconds and convert it to minutes and seconds (mm:ss).
@@ -84,6 +85,7 @@ $(document).ready(function() {
     
         return minutes + ":" + seconds;
         },
+        // Function that hides the questions and shows the result box
         showResults: function() {
             var count = 0;
             var arr = [];
