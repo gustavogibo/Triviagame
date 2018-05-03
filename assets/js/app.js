@@ -4,47 +4,63 @@ $(document).ready(function() {
 
         rightAnswers: 0,
         wrongAnswers: 0,
-        timer: 25,
+        unansweredQuestions: 0,
+        timer: 20,
+        counter: 0,
         interval: 0,
         //trivia.questions[0]
         questions:
             [
                 {question: "Which actress has won the most Oscars?",
                  options: ["Meryl Streep", "Julia Roberts", "Charlize Theron", "Jennifer Lawrence", "Katharine Hepburn"],
-                 answer: "Katharine Hepburn"                 
+                 answer: "Katharine Hepburn",
+                 name: "question-1-1"             
                 },
                 {question: "Name the director of the Lord of the Rings trilogy",
                  options: ["James Cameron", "Wes Anderson", "Martin Scorsese", "Peter Jackson", "Woody Allen"],
-                 answer: "Peter Jackson"                 
+                 answer: "Peter Jackson",
+                 name: "question-2-1"               
                 },
                 {question: "Who played Neo in The Matrix?",
                  options: ["Lawrence Fishburne", "Keanu Reeves", "Hugo Weaving", "John Wick", "Tom Cruise"],
-                 answer: "Keanu Reeves"                 
+                 answer: "Keanu Reeves",
+                 name: "question-3-1"                
                 },
                 {question: "In the movie 'The Wizard of Oz', what did the Scarecrow want from the wizard?",
                  options: ["Eyes", "Ears", "Brain", "Heart", "Lungs"],
-                 answer: "Brain"                 
+                 answer: "Brain",
+                 name: "question-4-1"   
                 },
                 {question: "What fictional city is the home of Batman?",
                  options: ["Metropolis", "Springfield", "Sunnydale", "Gotham City", "Emerald City"],
-                 answer: "Gotham City"                 
+                 answer: "Gotham City",
+                 name: "question-5-1"                 
                 },
 
             ],
         startGame: function() {
 
-            setInterval(trivia.count, 1000);
+            this.counter = setInterval(trivia.count, 1000);
 
         },
         count: function() {
 
+
+
             trivia.timer--;
-            //  TODO: Get the current time, pass that into the stopwatch.timeConverter function,
-            //        and save the result in a variable.
-            var newTime = trivia.timeConverter(trivia.timer);
-        
-            //  TODO: Use the variable you just created to show the converted time in the "display" div.
-            $("#countdown").html(newTime);
+
+            if(trivia.timer >= 0){
+
+                //  TODO: Get the current time, pass that into the stopwatch.timeConverter function,
+                //        and save the result in a variable.
+                var newTime = trivia.timeConverter(trivia.timer);
+            
+                //  TODO: Use the variable you just created to show the converted time in the "display" div.
+                $("#countdown").html(newTime);
+            } else {
+
+                clearInterval(this.counter);
+            }
         
         },
         timeConverter: function(t) {
@@ -68,22 +84,116 @@ $(document).ready(function() {
         return minutes + ":" + seconds;
         },
         showResults: function() {
-            
+            var count = 0;
             var arr = [];
             $(".box-questions input[type=radio]:checked").each(function() {
-                arr.push($(this).val());
+
+                arr[count]= {question: $(this).attr("name"), answer: $(this).val()};
+                count++;
+
+                // arr.push($(this).val());
             });
 
-            console.log(arr);
+            for (var i = 0; i < arr.length; i++) { 
+        
+                switch(arr[i].question) {
+
+                    case "question-1-1":
+
+                        if(arr[i].answer == "Katharine Hepburn") {
+
+                            trivia.rightAnswers++;
+
+                        } else {
+
+                            trivia.wrongAnswers++;
+                        }
+                        break;
+                    
+                    case "question-2-1":
+                        
+                        if(arr[i].answer == "Peter Jackson") {
+
+                            trivia.rightAnswers++;
+
+                        } else {
+
+                            trivia.wrongAnswers++;
+                        }
+                        break;
+
+                    case "question-3-1":
+                        
+                        if(arr[i].answer == "Keanu Reeves") {
+
+                            trivia.rightAnswers++;
+
+                        } else {
+
+                            trivia.wrongAnswers++;
+                        }
+                        break;
+
+                    case "question-4-1":
+                        
+                        if(arr[i].answer == "Brain") {
+
+                            trivia.rightAnswers++;
+
+                        } else {
+
+                            trivia.wrongAnswers++;
+                        }
+                        break;
+
+                    case "question-5-1":
+                        
+                        if(arr[i].answer == "Gotham City") {
+
+                            trivia.rightAnswers++;
+
+                        } else {
+
+                            trivia.wrongAnswers++;
+                        }
+                        break;
+            
+                }
+                
+            }
+
+            trivia.unansweredQuestions = 5 - (trivia.rightAnswers + trivia.wrongAnswers);
+
+            $(".box-questions .col-12").hide();
+            $(".box-results").show();
+            $("#right-answers").html("You got "+trivia.rightAnswers+" right answers");
+            $("#wrong-answers").html("You got "+trivia.wrongAnswers+" wrong answers");
+
+            if(trivia.unansweredQuestions != 0) {
+
+                $("unanswered-questions").html("You had "+trivia.unansweredQuestions+" unanswered questions.")
+
+            }
+
+    
+            console.log(trivia.rightAnswers);
+            console.log(trivia.wrongAnswers);
 
         }
-        
 
+        
+        
+        
     };
+
+    
+
+
+    // console.log(trivia.questions);
 
     trivia.startGame();
 
-    setTimeout(trivia.showResults, 25000 );
+    setTimeout(trivia.showResults, 20000 );
 
 
 });
