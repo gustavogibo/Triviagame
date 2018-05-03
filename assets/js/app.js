@@ -1,5 +1,30 @@
 $(document).ready(function() {
 
+    // get initial position of the element
+    var fixmeTop = $('.box-timer').offset().top;       
+
+    // assign scroll event listener
+    $(window).scroll(function() {                  
+
+        // get current position
+        var currentScroll = $(window).scrollTop(); 
+
+        // apply position: fixed if you scroll to that element or below it
+        if (currentScroll >= fixmeTop) {           
+            $('.box-timer').css({                     
+                position: 'fixed',
+                top: '0',
+                left: '0',
+            });
+        } else {       
+            // apply position: static if you scroll above it                            
+            $('.box-timer').css({                      
+                position: 'static'
+            });
+        }
+
+    });
+
     var trivia = {
 
         rightAnswers: 0,
@@ -94,7 +119,6 @@ $(document).ready(function() {
                 arr[count]= {question: $(this).attr("name"), answer: $(this).val()};
                 count++;
 
-                // arr.push($(this).val());
             });
 
             for (var i = 0; i < arr.length; i++) { 
@@ -209,32 +233,7 @@ $(document).ready(function() {
 
     trivia.startGame();
 
+    // The function ShowResults inside the Object trivia will be called after 20 seconds (timer ends)
     setTimeout(trivia.showResults, 20000 );
-
-    // get initial position of the element
-    var fixmeTop = $('.box-timer').offset().top;       
-
-    // assign scroll event listener
-    $(window).scroll(function() {                  
-
-        // get current position
-        var currentScroll = $(window).scrollTop(); 
-
-        // apply position: fixed if you scroll to that element or below it
-        if (currentScroll >= fixmeTop) {           
-            $('.box-timer').css({                     
-                position: 'fixed',
-                top: '0',
-                left: '0',
-            });
-        } else {       
-            // apply position: static if you scroll above it                            
-            $('.box-timer').css({                      
-                position: 'static'
-            });
-        }
-
-    });
-
 
 });
