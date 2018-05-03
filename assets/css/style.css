@@ -1,4 +1,20 @@
+header {
+    background: #007bff;
+    color: white;
+    padding: 100px 0px;
+}
+
+header h1 {
+    font-size: 4rem;
+}
+
 body {
-    background: url(../img/background.jpg) no-repeat center;
+    /* background: url(../img/background.jpg) no-repeat center; */
+    background-color: #000;
     background-size: cover;
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.box-timer {
+    z-index: 9999;
 }
