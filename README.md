@@ -1,5 +1,9 @@
 # Trivia Game
 
+# Brief Description
+
+Test your knowledge about movies in this 6-question Trivia Game! 30 seconds is all you have. Wait for the timer and check your score!
+
 # Installing
 
 * Download the ZIP file

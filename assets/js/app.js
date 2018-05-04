@@ -32,7 +32,7 @@ $(document).ready(function() {
         rightAnswers: 0,
         wrongAnswers: 0,
         unansweredQuestions: 0,
-        timer: 20,
+        timer: 30,
         counter: 0,
         interval: 0,
         questions:
@@ -62,6 +62,11 @@ $(document).ready(function() {
                  answer: "Gotham City",
                  name: "question-5-1"                 
                 },
+                {question: "Who played the fictional anti hero Deadpool in the 2016 movie?",
+                 options: ["Tom Cruise", "Michael Keaton", "Hugh Jackman", "Ben Affleck", "Ryan Reynolds"],
+                 answer: "Ryan Reynolds",
+                 name: "question-6-1"                 
+                }
 
             ],
         // function responsible for change the timer each second and update in the DOM
@@ -186,12 +191,24 @@ $(document).ready(function() {
                             trivia.wrongAnswers++;
                         }
                         break;
+                    
+                        case "question-6-1":
+                        
+                        if(arr[i].answer == "Ryan Reynolds") {
+
+                            trivia.rightAnswers++;
+
+                        } else {
+
+                            trivia.wrongAnswers++;
+                        }
+                        break;
             
                 }
                 
             }
 
-            trivia.unansweredQuestions = 5 - (trivia.rightAnswers + trivia.wrongAnswers);
+            trivia.unansweredQuestions = 6 - (trivia.rightAnswers + trivia.wrongAnswers);
 
             $(".box-timer").hide();
             $(".box-questions .col-12").hide();
@@ -207,15 +224,15 @@ $(document).ready(function() {
 
             var gif = "";
 
-            if(trivia.rightAnswers == 5) {
+            if(trivia.rightAnswers == 6) {
 
                 gif = "https://media.giphy.com/media/lErCIOgRGlkGI/giphy.gif";
 
-            } else if(trivia.wrongAnswers == 5) {
+            } else if(trivia.wrongAnswers == 6) {
 
                 gif = "https://media.giphy.com/media/3otPoHtlHgovmNJSDe/giphy.gif"
 
-            } else if(trivia.unansweredQuestions == 5){
+            } else if(trivia.unansweredQuestions == 6){
 
                 gif = "https://media1.giphy.com/media/a93jwI0wkWTQs/giphy.gif";
 
@@ -235,6 +252,6 @@ $(document).ready(function() {
     trivia.startGame();
 
     // The function ShowResults inside the Object trivia will be called after 20 seconds (timer ends)
-    setTimeout(trivia.showResults, 20000 );
+    setTimeout(trivia.showResults, 30000 );
 
 });
