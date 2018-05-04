@@ -11,16 +11,18 @@ $(document).ready(function() {
 
         // apply position: fixed if you scroll to that element or below it
         if (currentScroll >= fixmeTop) {           
-            $('.box-timer').css({                     
+            $('#box-timer-fixed').css({                     
                 position: 'fixed',
                 top: '0',
                 left: '0',
             });
+            $("#box-timer-fixed").show();
         } else {       
             // apply position: static if you scroll above it                            
-            $('.box-timer').css({                      
+            $('#box-timer-fixed').css({                      
                 position: 'static'
             });
+            $("#box-timer-fixed").hide();
         }
 
     });
@@ -82,7 +84,7 @@ $(document).ready(function() {
                 var newTime = trivia.timeConverter(trivia.timer);
             
                 //  TODO: Use the variable you just created to show the converted time in the "display" div.
-                $("#countdown").html(newTime);
+                $(".countdown").html(newTime);
             } else {
 
                 clearInterval(this.counter);
@@ -191,6 +193,7 @@ $(document).ready(function() {
 
             trivia.unansweredQuestions = 5 - (trivia.rightAnswers + trivia.wrongAnswers);
 
+            $(".box-timer").hide();
             $(".box-questions .col-12").hide();
             $(".box-results").show();
             $("#right-answers").html("You got "+trivia.rightAnswers+" right answers");
@@ -226,8 +229,6 @@ $(document).ready(function() {
 
         }
 
-        
-        
         
     };
 
