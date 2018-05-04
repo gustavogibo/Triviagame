@@ -9,7 +9,7 @@ Test your knowledge about movies in this 6-question Trivia Game! 30 seconds is a
 * Download the ZIP file
 * Extract all the files
 * Open index.html
-* Be ready! Once the page loads, the timer will start 
+* Be ready! Once the page loads, the timer will start. Good luck!
 
 # Technologies
 
