@@ -4,13 +4,6 @@
 
 Test your knowledge about movies in this 6-question Trivia Game! 30 seconds is all you have. Wait for the timer and check your score!
 
-# Installing
-
-* Download the ZIP file
-* Extract all the files
-* Open index.html
-* Be ready! Once the page loads, the timer will start. Good luck!
-
 # Technologies
 
 * HTML5
