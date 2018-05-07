@@ -242,7 +242,7 @@ $(document).ready(function() {
 
             }
 
-            $("#gif").html("<img src='"+gif+"'>");
+            $("#gif").html("<img class='img-fluid' src='"+gif+"'>");
 
         }
 
